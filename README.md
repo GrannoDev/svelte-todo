@@ -1,42 +1,111 @@
-# sv
+# Svelte Todo
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A small todo app built with modern Svelte tooling and local-first storage.
 
-## Creating a project
+It keeps the experience simple:
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Add tasks quickly
+- Mark tasks as complete
+- Delete tasks
+- Persist todos locally with IndexedDB
+- Switch between light and dark themes
 
-```sh
-# create a new project
-npx sv create my-app
+## Tech Stack
+
+### Svelte 5 runes
+
+The UI is built with Svelte 5 and rune-based reactivity such as `$state`, `$derived`, and `$effect`.
+
+Why it matters:
+
+- Keeps component state concise
+- Makes derived UI values easy to read
+- Fits this small app without extra state libraries
+
+### Dexie
+
+Todos are stored in IndexedDB through Dexie.
+
+Why it matters:
+
+- Data stays in the browser
+- Todos persist across refreshes
+- `liveQuery` keeps the UI in sync with the database
+
+### Tailwind CSS
+
+Styling is handled with Tailwind CSS utility classes.
+
+Why it matters:
+
+- Fast UI iteration
+- Consistent spacing and typography
+- Simple dark mode styling
+
+### Vitest
+
+Unit tests are written with Vitest.
+
+Why it matters:
+
+- Fast test runs during development
+- Good fit with Vite and Svelte projects
+- Helps verify the todo and toast store behavior
+
+## Project Structure
+
+```text
+src/
+  lib/
+    db.ts                # Dexie database setup
+    todo/                # Todo UI and store
+    toast/               # Toast state and components
+    theme-toggle.svelte  # Light/dark theme toggle
+  routes/
+    +page.svelte         # Main todo page
+    +layout.svelte       # App shell
 ```
 
-To recreate this project with the same configuration:
+## How It Works
 
-```sh
-# recreate this project
-pnpm dlx sv@0.13.2 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:none" vitest="usages:unit" --install pnpm svelte-todo
-```
+1. The user adds a todo from the input form.
+2. The todo store writes it to Dexie.
+3. Dexie `liveQuery` updates the store whenever data changes.
+4. Svelte runes reactively update the UI.
+5. Vitest covers the store logic.
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Scripts
 
 ```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm run build
+npm run preview
+npm run check
+npm run lint
+npm run test
 ```
 
-## Building
-
-To create a production version of your app:
+## Local Development
 
 ```sh
-npm run build
+npm install
+npm run dev
 ```
 
-You can preview the production build with `npm run preview`.
+Open the app in your browser and your todos will be saved locally in IndexedDB.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Why This Stack Works Well For A Todo App
+
+- Svelte 5 keeps the UI logic small and readable
+- Dexie adds reliable browser persistence without a backend
+- Tailwind CSS makes the interface quick to style
+- Vitest keeps the core behavior easy to test
+
+## Summary
+
+This project is a minimal, local-first todo app using:
+
+- `Svelte 5 runes` for reactive UI
+- `Dexie` for IndexedDB persistence
+- `Tailwind CSS` for styling
+- `Vitest` for unit testing
