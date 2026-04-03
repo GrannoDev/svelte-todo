@@ -32,7 +32,7 @@
 		<button
 			type="submit"
 			disabled={!value.trim()}
-			class="grid aspect-square place-items-center gap-2 rounded bg-neutral-800 text-neutral-200 transition-transform duration-300 active:scale-95 dark:bg-neutral-200 dark:text-neutral-800"
+			class="grid aspect-square size-9 place-items-center gap-2 rounded bg-neutral-800 text-neutral-200 transition-transform duration-300 active:scale-95 dark:bg-neutral-200 dark:text-neutral-800"
 		>
 			<Plus size={24} class="shrink-0" />
 		</button>

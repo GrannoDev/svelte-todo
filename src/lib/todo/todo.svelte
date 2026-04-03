@@ -42,7 +42,7 @@
 		<button
 			type="button"
 			onclick={() => deleteTodo(todo.id)}
-			class="grid aspect-square place-items-center rounded p-2 hover:bg-neutral-400/10"
+			class="grid aspect-square size-9 place-items-center rounded hover:bg-neutral-400/10"
 		>
 			<Minus size={24} class="shrink-0" />
 		</button>
