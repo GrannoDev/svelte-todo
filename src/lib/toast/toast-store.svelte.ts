@@ -1,5 +1,5 @@
 import { getContext, setContext } from 'svelte';
-import { SvelteMap } from 'svelte/reactivity';
+import { MediaQuery, SvelteMap } from 'svelte/reactivity';
 
 export type Toast = {
 	id: string;
@@ -10,8 +10,11 @@ export type Toast = {
 export class ToastStore {
 	#activeToasts = new SvelteMap<string, ReturnType<typeof setTimeout>>();
 	toasts: Toast[] = $state([]);
-
+	isDesktop = new MediaQuery('(min-width: 1024px)');
 	add(message: string, type: 'success' | 'error' | 'info' = 'info') {
+		if (!this.isDesktop.current) {
+			return;
+		}
 		const id = crypto.randomUUID();
 		this.toasts = [...this.toasts, { id, message, type }];
 		const timeoutId = setTimeout(() => this.remove(id), 3000);

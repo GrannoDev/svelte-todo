@@ -2,6 +2,11 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+html,
+body {
+	overflow-x: clip;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation-duration: 500ms;

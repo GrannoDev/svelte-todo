@@ -19,7 +19,7 @@
 	}
 </script>
 
-<div class="flex w-full gap-2" in:fade out:fly={{ x: '100vw', opacity: 0, duration: 500 }}>
+<div class="flex w-full gap-2" in:fade out:fly={{ x: 96, opacity: 0, duration: 300 }}>
 	<div
 		class="flex w-full items-center justify-between gap-6 border-b border-neutral-500 px-4 py-4 pr-1 text-neutral-700 dark:border-neutral-700 dark:text-neutral-200"
 	>

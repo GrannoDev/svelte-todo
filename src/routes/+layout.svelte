@@ -9,7 +9,6 @@
 	import { setTodoStore } from '$lib/todo/todo-store.svelte';
 	import { onDestroy } from 'svelte';
 	import ThemeToggle from '$lib/theme-toggle.svelte';
-
 	let { children } = $props();
 
 	const toastStore = setToastStore();
@@ -26,13 +25,15 @@
 	<title>Svelte Todo</title>
 </svelte:head>
 
-<header class="mx-auto flex h-20 max-w-5xl items-center justify-between px-6 sm:px-8">
+<header class="mx-auto flex h-20 max-w-svw items-center justify-between px-6 sm:px-8 lg:max-w-5xl">
 	<a href={resolve('/')} class="text-3xl font-bold text-neutral-700 dark:text-neutral-200"
 		>Svelte Todo</a
 	>
 	<ThemeToggle />
 </header>
-<main class="mx-auto min-h-[calc(100vh-80px-48px)] max-w-5xl p-6 pb-14 sm:p-8">
+<main
+	class="relative mx-auto min-h-[calc(100vh-80px-48px)] max-w-svw p-6 pb-14 sm:p-8 lg:max-w-5xl"
+>
 	{@render children()}
 	<Toaster />
 </main>

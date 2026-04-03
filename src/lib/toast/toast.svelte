@@ -15,7 +15,7 @@
 	type="button"
 	in:fly={{ y: 20, duration: 150 }}
 	out:fly={{ y: 20, duration: 150 }}
-	class="flex w-64 items-center gap-4 rounded-lg border border-neutral-700 bg-neutral-200 px-4 py-3 font-medium dark:bg-neutral-800"
+	class="flex w-64 min-w-0 items-center gap-4 rounded-lg border border-neutral-700 bg-neutral-200 px-4 py-3 font-medium dark:bg-neutral-800"
 	onclick={() => toastStore.remove(toast.id)}
 >
 	<div class="mb-auto shrink-0 text-neutral-900 dark:text-neutral-300">

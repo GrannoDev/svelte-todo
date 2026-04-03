@@ -8,7 +8,7 @@
 
 <section class="flex flex-col gap-1">
 	{#each todoStore.todos as todo (todo.id)}
-		<div animate:flip>
+		<div animate:flip={{ duration: 300 }}>
 			<Todo {todo} />
 		</div>
 	{/each}
