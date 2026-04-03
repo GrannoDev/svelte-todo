@@ -1,15 +1,31 @@
 <script lang="ts">
 	import Moon from 'phosphor-svelte/lib/MoonIcon';
 	import Sun from 'phosphor-svelte/lib/SunIcon';
+	import { onMount } from 'svelte';
+
 	let theme = $state(localStorage.getItem('theme') || 'dark');
 
-	function toggleTheme() {
-		theme = theme === 'dark' ? 'light' : 'dark';
-		localStorage.setItem('theme', theme);
-	}
-	$effect(() => {
+	onMount(() => {
 		document.documentElement.setAttribute('data-theme', theme);
 	});
+	function applyTheme(nextTheme: string) {
+		theme = nextTheme;
+		localStorage.setItem('theme', nextTheme);
+		document.documentElement.setAttribute('data-theme', nextTheme);
+	}
+
+	function toggleTheme() {
+		const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
+		if (!document.startViewTransition) {
+			applyTheme(nextTheme);
+			return;
+		}
+
+		document.startViewTransition(() => {
+			applyTheme(nextTheme);
+		});
+	}
 </script>
 
 <button

@@ -23,15 +23,32 @@
 	<link rel="icon" href={favicon16} />
 	<link rel="icon" href={favicon32} />
 	<link rel="shortcut icon" href={faviconIco} />
+	<title>Svelte Todo</title>
 </svelte:head>
 
-<header class="mx-auto flex h-20 max-w-5xl items-center justify-between px-8">
+<header class="mx-auto flex h-20 max-w-5xl items-center justify-between px-6 sm:px-8">
 	<a href={resolve('/')} class="text-3xl font-bold text-neutral-700 dark:text-neutral-200"
 		>Svelte Todo</a
 	>
 	<ThemeToggle />
 </header>
-<main class="mx-auto max-w-5xl p-8">
+<main class="mx-auto min-h-[calc(100vh-80px-48px)] max-w-5xl p-6 pb-14 sm:p-8">
 	{@render children()}
 	<Toaster />
 </main>
+
+<footer class="h-12">
+	<div class="mx-auto max-w-5xl px-6 py-4 text-center text-sm text-neutral-500 sm:px-8">
+		<p>
+			Made by
+			<a
+				href="https://magnusgranno.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-neutral-800 hover:underline dark:text-neutral-200"
+			>
+				Magnus Granno
+			</a>
+		</p>
+	</div>
+</footer>
